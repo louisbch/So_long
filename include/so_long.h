@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/22 15:45:13 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/23 15:00:55 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,9 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
-	int		size_x;
-	int		size_y;
-	int		p_x;
-	int		p_y;
-	int		count;
-	int		collect;
-	t_map	*map;
-	t_img	*img;
+	int		player;
+	int		collected;
+	int		out;
 }				t_data;
 
 /*--FT_IMG.C--*/
@@ -77,12 +72,19 @@ typedef struct s_data
 /*--FT_MAP.C--*/
 
 char	**ft_reading_map(char **av);
-void	check_map(t_map *map);
+void	check_map(t_map *map, t_data data);
 void	check_map_help(t_map *map);
+void	check_char(t_map *map, int i, int j);
+void	ft_check_walls(t_map *map);
 
 /*FT_UTILS.C*/
 
 int		str_last(char *str, char *need, size_t size);
+void	ft_map_error(char *str);
+
+/*--FT_MAIN.C--*/
+
+void	ft_initialize_struct(t_data *data);
 
 /*--FT_INIT.C--*/
 

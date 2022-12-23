@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:12:17 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/22 14:49:06 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/23 13:45:25 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,10 @@ int	str_last(char *str, char *need, size_t size)
 		return (-1);
 	return (ft_strncmp(str + ft_strlen(str) - size,
 			need + ft_strlen(need) - size, size));
+}
+
+void	ft_map_error(char *str)
+{
+	ft_putstr_fd(str, 1);
+	exit(EXIT_FAILURE);
 }

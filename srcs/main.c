@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 13:14:59 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/23 15:39:43 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/27 12:07:55 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ int	main(int ac, char **av)
 		//mlx_loop(data.mlx);
 	}
 	else
-		ft_putstr_fd("Try like this ./so_long with a map.ber\n", 1);
+		ft_putstr_fd("Try like this ./so_long with a map.ber\n", 2);
 }

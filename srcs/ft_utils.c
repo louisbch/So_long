@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabda <aabda@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:12:17 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/23 13:45:25 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/27 11:32:28 by aabda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	str_last(char *str, char *need, size_t size)
 
 void	ft_map_error(char *str)
 {
-	ft_putstr_fd(str, 1);
+	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }

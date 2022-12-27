@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabda <aabda@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 13:12:17 by lbouchon          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/27 12:07:37 by lbouchon         ###   ########.fr       */
-=======
-/*   Updated: 2022/12/27 11:32:28 by aabda            ###   ########.fr       */
->>>>>>> c66742da91720d44c74af328fa76780b404f6943
+/*   Created: 2022/12/27 12:14:33 by lbouchon          #+#    #+#             */
+/*   Updated: 2022/12/27 15:48:03 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +24,14 @@ void	ft_map_error(char *str)
 {
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
+}
+
+void	ft_check_walls_help(t_map *map, int i, int j, int count)
+{
+	if (i == 0 && map->map[i][j] != '1')
+		ft_map_error("Invalid map\n");
+	if (j == 0 && map->map[i][j] != '1')
+		ft_map_error("Invalid map\n");
+	if (i == (count - 1) && map->map[i][j] != '1')
+		ft_map_error("Invalid map\n");
 }

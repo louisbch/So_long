@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/23 15:00:55 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:46:34 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	ft_check_walls(t_map *map);
 
 int		str_last(char *str, char *need, size_t size);
 void	ft_map_error(char *str);
+void	ft_check_walls_help(t_map *map, int i, int j, int count);
 
 /*--FT_MAIN.C--*/
 

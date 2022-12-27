@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabda <aabda@student.s19.be>               +#+  +:+       +#+        */
+/*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:48:41 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/27 11:32:58 by aabda            ###   ########.fr       */
+/*   Updated: 2022/12/27 15:46:57 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,16 @@ void	check_map_help(t_map *map)
 	int	len;
 
 	i = 0;
-	j = 0;
 	len = ft_strlen(map->map[i]);
 	while (map->map[i])
 	{
+		j = 0;
 		while (map->map[i][j])
 		{
-			check_char(map, i , j);
+			check_char(map, i, j);
 			j++;
-			if (map->map[i][j] < len)
-			{
-				j = 0;
+			if (map->map[i][j] == len)
 				break ;
-			}
 		}
 		i++;
 	}
@@ -101,40 +98,24 @@ void	ft_check_walls(t_map *map)
 	int	j;
 	int	count;
 
-	i = -1;
+	i = 0;
 	count = 0;
 	len = ft_strlen(map->map[i]);
-	i = 0;
-	printf("%d\n", count);
+	while (map->map[count])
+		count++;
 	while (map->map[i])
 	{
-		j = 0;
-		while (map->map[i][j])
+		j = -1;
+		while (map->map[i][++j])
 		{
-			if (i == 0 && map->map[i][j] != '1') 
-				ft_map_error("Invalid map\n");
-			if (j == 0 && map->map[i][j] != '1')
-				ft_map_error("Invalid map\n");
-			if (i == count && map->map[i][j] != '1')
-				ft_map_error("Invalid map\n");
-			j++;
-			if (map->map[i][j] == len)
+			ft_check_walls_help(map, i, j, count);
+			if (j == len - 1)
 			{
 				if (map->map[i][j] != '1')
 					ft_map_error("Invalid map\n");
 				break ;
 			}
 		}
-		printf("%s\n", map->map[i]);
 		i++;
-	}
-	--i;
-	while (map->map[i][j])
-	{
-		if (map->map[i][j] != '1')
-			ft_map_error("Invalid map \n");
-		if (map->map[i][j + 1] == '\n')
-			return ;
-		j++;
 	}
 }

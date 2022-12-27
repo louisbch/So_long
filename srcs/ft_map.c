@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aabda <aabda@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:48:41 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/23 16:15:33 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/27 11:32:58 by aabda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	ft_check_walls(t_map *map)
 		if (map->map[i][j] != '1')
 			ft_map_error("Invalid map \n");
 		if (map->map[i][j + 1] == '\n')
-			return;
+			return ;
 		j++;
 	}
 }

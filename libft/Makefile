@@ -6,7 +6,7 @@
 #    By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 14:24:53 by lbouchon          #+#    #+#              #
-#    Updated: 2022/12/22 12:43:16 by lbouchon         ###   ########.fr        #
+#    Updated: 2022/12/29 14:58:51 by lbouchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS = \
 			ft_bzero.c				\
 			ft_split.c				\
 			ft_putstr_fd.c			\
+			ft_strdup.c				\
 
 OBJS = ${SRCS:.c=.o}
 

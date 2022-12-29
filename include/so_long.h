@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/27 15:46:34 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:43:36 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 /*--DEFINE TOUCH--*/
 
-# define IMG_W 32
-# define IMG_H 32
 # define ESC 53
 # define W 13
 # define A 0
@@ -33,17 +31,19 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 
 /*--struct for xpm and textures--*/
 
-typedef struct s_img
+typedef struct s_player
 {
-	void	*up_link;
-	void	*left_link;
-	void	*right_link;
-	void	*down_link;
-	void	*backgrounds;
-}				t_img;
+	int		pos_x;
+	int		pos_y;
+	
+}				t_player;
 
 /*--struct for the map--*/
 
@@ -65,33 +65,54 @@ typedef struct s_data
 	int		player;
 	int		collected;
 	int		out;
+	int		x;
+	int		y;
+	int		len;
+	t_map	map;
+	t_player	player_pos;
 }				t_data;
 
 /*--FT_IMG.C--*/
 
+void	ft_put_background(t_data data, int size_x, int size_y);
+void	ft_put_img(t_data data, int size_x, int size_y);
+void	ft_put_img_help(t_data data, int i, int j);
+
+/*--FT_IMG_UTILS.C--*/
+
+void	ft_put_walls(t_data data, int size_x, int size_y);
+void	ft_put_player(t_data data, char *str, int size_x, int size_y);
+void	ft_put_swords(t_data data, int size_x, int size_y);
+void	ft_put_exit(t_data data, int size_x, int size_y);
+
 /*--FT_MAP.C--*/
 
 char	**ft_reading_map(char **av);
-void	check_map(t_map *map, t_data data);
-void	check_map_help(t_map *map);
-void	check_char(t_map *map, int i, int j);
-void	ft_check_walls(t_map *map);
+void	check_map(t_data data);
+void	check_map_help(t_data data);
+void	check_char(t_data data, int i, int j);
+void	ft_check_walls(t_data data);
 
 /*FT_UTILS.C*/
 
 int		str_last(char *str, char *need, size_t size);
 void	ft_map_error(char *str);
-void	ft_check_walls_help(t_map *map, int i, int j, int count);
+void	ft_check_walls_help(t_data data, int i, int j, int count);
+int		ft_check_size_of_char(t_data data);
+int		ft_check_lines(t_data data);
 
 /*--FT_MAIN.C--*/
 
 void	ft_initialize_struct(t_data *data);
 
-/*--FT_INIT.C--*/
+/*--FT_KEY_CODE.C--*/
 
-/*--FT_KEY_HOOK.C--*/
+int		ft_keycode(t_data data, int keycode);
 
-/*--FT_MOVE--*/
+/*--FT_MOVE.C--*/
+
+void	ft_move(t_data data, int keycode);
+void	ft_parse_player_pos(t_data data);
 
 /*--FT_FINISH.c--*/
 

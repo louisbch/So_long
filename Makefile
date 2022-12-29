@@ -6,7 +6,7 @@
 #    By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:47:11 by lbouchon          #+#    #+#              #
-#    Updated: 2022/12/27 15:05:58 by lbouchon         ###   ########.fr        #
+#    Updated: 2022/12/29 17:47:31 by lbouchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,13 @@ CFLAGS = -Wall -Wextra -Werror
 
 NORMINETTE = norminette
 			
-SRCS = $(DIR)main.c			\
-		$(DIR)ft_map.c		\
-		$(DIR)ft_utils.c	\
+SRCS = $(DIR)main.c				\
+		$(DIR)ft_map.c			\
+		$(DIR)ft_utils.c		\
+		$(DIR)ft_img.c			\
+		$(DIR)ft_img_utils.c	\
+		$(DIR)ft_keycode.c		\
+		$(DIR)ft_move.c			\
 		
 OBJS = ${SRCS:.c=.o}
 

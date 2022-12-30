@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/29 18:43:36 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:54:35 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_data
 	int		player;
 	int		collected;
 	int		out;
+	char	**av;
 	int		x;
 	int		y;
 	int		len;
@@ -74,32 +75,32 @@ typedef struct s_data
 
 /*--FT_IMG.C--*/
 
-void	ft_put_background(t_data data, int size_x, int size_y);
-void	ft_put_img(t_data data, int size_x, int size_y);
-void	ft_put_img_help(t_data data, int i, int j);
+void	ft_put_background(t_data *data, int size_x, int size_y);
+void	ft_put_img(t_data *data, int size_x, int size_y);
+void	ft_put_img_help(t_data *data, int i, int j);
 
 /*--FT_IMG_UTILS.C--*/
 
-void	ft_put_walls(t_data data, int size_x, int size_y);
-void	ft_put_player(t_data data, char *str, int size_x, int size_y);
-void	ft_put_swords(t_data data, int size_x, int size_y);
-void	ft_put_exit(t_data data, int size_x, int size_y);
+void	ft_put_walls(t_data *data, int size_x, int size_y);
+void	ft_put_player(t_data *data, char *str, int size_x, int size_y);
+void	ft_put_swords(t_data *data, int size_x, int size_y);
+void	ft_put_exit(t_data *data, int size_x, int size_y);
 
 /*--FT_MAP.C--*/
 
 char	**ft_reading_map(char **av);
-void	check_map(t_data data);
-void	check_map_help(t_data data);
-void	check_char(t_data data, int i, int j);
-void	ft_check_walls(t_data data);
+void	check_map(t_data *data);
+void	check_map_help(t_data *data);
+void	check_char(t_data *data, int i, int j);
+void	ft_check_walls(t_data *data);
 
 /*FT_UTILS.C*/
 
 int		str_last(char *str, char *need, size_t size);
 void	ft_map_error(char *str);
-void	ft_check_walls_help(t_data data, int i, int j, int count);
-int		ft_check_size_of_char(t_data data);
-int		ft_check_lines(t_data data);
+void	ft_check_walls_help(t_data *data, int i, int j, int count);
+int		ft_check_size_of_char(t_data *data);
+int		ft_check_lines(t_data *data);
 
 /*--FT_MAIN.C--*/
 
@@ -111,8 +112,9 @@ int		ft_keycode(t_data data, int keycode);
 
 /*--FT_MOVE.C--*/
 
-void	ft_move(t_data data, int keycode);
-void	ft_parse_player_pos(t_data data);
+void	ft_move(t_data *data, int keycode);
+int		ft_parse_player_pos_x(t_data *data);
+int		ft_parse_player_pos_y(t_data *data);
 
 /*--FT_FINISH.c--*/
 

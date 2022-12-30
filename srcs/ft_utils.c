@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:33 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/29 18:27:55 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:02:00 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,35 +26,33 @@ void	ft_map_error(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_check_walls_help(t_data data, int i, int j, int count)
+void	ft_check_walls_help(t_data *data, int i, int j, int count)
 {
-	if (i == 0 && data.map.map[i][j] != '1')
+	if (i == 0 && data->map.map[i][j] != '1')
 		ft_map_error("Invalid map\n");
-	if (j == 0 && data.map.map[i][j] != '1')
+	if (j == 0 && data->map.map[i][j] != '1')
 		ft_map_error("Invalid map\n");
-	if (i == (count - 1) && data.map.map[i][j] != '1')
+	if (i == (count - 1) && data->map.map[i][j] != '1')
 		ft_map_error("Invalid map\n");
 }
 
-int	ft_check_size_of_char(t_data data)
+int	ft_check_size_of_char(t_data *data)
 {
-	int	len;
 	int	i;
-
-	len = 0;
+	
 	i = 0;
-	len = ft_strlen(data.map.map[i]);
-	return (len);
+	data->len = ft_strlen(data->map.map[i]);
+	return (data->len);
 }
 
-int	ft_check_lines(t_data data)
+int	ft_check_lines(t_data *data)
 {
 	int	i;
 	int	count;
 
 	i = 0;
 	count = 0;
-	while (data.map.map[i])
+	while (data->map.map[i])
 	{
 		i++;
 		count++;

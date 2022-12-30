@@ -6,13 +6,13 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:55:02 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/29 18:28:40 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:06:00 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	ft_put_background(t_data data, int size_x, int size_y)
+void	ft_put_background(t_data *data, int size_x, int size_y)
 {
 	int		width;
 	int		heigth;
@@ -26,9 +26,9 @@ void	ft_put_background(t_data data, int size_x, int size_y)
 		x = 0;
 		while (x < size_x * 32)
 		{
-			background = mlx_xpm_file_to_image(data.mlx,
+			background = mlx_xpm_file_to_image(data->mlx,
 					"./textures/background.xpm", &width, &heigth);
-			mlx_put_image_to_window(data.mlx, data.win, background, x, y);
+			mlx_put_image_to_window(data->mlx, data->win, background, x, y);
 			x += 32;
 			if (x == size_x)
 				break ;
@@ -37,37 +37,37 @@ void	ft_put_background(t_data data, int size_x, int size_y)
 	}
 }
 
-void	ft_put_img(t_data data, int size_x, int size_y)
+void	ft_put_img(t_data *data, int size_x, int size_y)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	data.y = 0;
-	while (data.map.map[i] && data.y < (size_y * 32))
+	data->y = 0;
+	while (data->map.map[i] && data->y < (size_y * 32))
 	{
 		j = -1;
-		data.x = 0;
-		while (data.map.map[i][++j] && data.x < (size_x * 32))
+		data->x = 0;
+		while (data->map.map[i][++j] && data->x < (size_x * 32))
 		{
 			ft_put_img_help(data, i, j);
-			data.x += 32;
-			if (data.x == size_x)
+			data->x += 32;
+			if (data->x == size_x)
 				break ;
 		}
 		i++;
-		data.y += 32;
+		data->y += 32;
 	}
 }
 
-void	ft_put_img_help(t_data data, int i, int j)
+void	ft_put_img_help(t_data *data, int i, int j)
 {
-	if (data.map.map[i][j] == '1')
-		ft_put_walls(data, data.x, data.y);
-	if (data.map.map[i][j] == 'P')
-		ft_put_player(data, "./textures/right.xpm",data.x, data.y);
-	if (data.map.map[i][j] == 'C')
-		ft_put_swords(data, data.x, data.y);
-	if (data.map.map[i][j] == 'E')
-		ft_put_exit(data, data.x, data.y);
+	if (data->map.map[i][j] == '1')
+		ft_put_walls(data, data->x, data->y);
+	if (data->map.map[i][j] == 'P')
+		ft_put_player(data, "./textures/right.xpm",data->x, data->y);
+	if (data->map.map[i][j] == 'C')
+		ft_put_swords(data, data->x, data->y);
+	if (data->map.map[i][j] == 'E')
+		ft_put_exit(data, data->x, data->y);
 }

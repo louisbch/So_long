@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:44 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/29 18:45:39 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:07:25 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,18 @@ int	main(int ac, char **av)
 	{
 		data.map.map = ft_reading_map(av);
 		ft_initialize_struct(&data);
-		check_map(data);
-		ft_check_walls(data);
-		size_x = ft_check_size_of_char(data);
-		size_y = ft_check_lines(data);
+		check_map(&data);
+		ft_check_walls(&data);
+		size_x = ft_check_size_of_char(&data);
+		size_y = ft_check_lines(&data);
 		data.mlx = mlx_init();
 		data.win = mlx_new_window(data.mlx, size_x * 32, size_y * 32, "so_long");
-		ft_put_background(data, size_x, size_y);
-		ft_put_img(data, size_x, size_y);
-		mlx_hook(data.win, 17, 0, &red_cross, &data);
-		mlx_hook(data.win, 2, 0, &ft_keycode, &data);
+		ft_put_background(&data, size_x, size_y);
+		ft_put_img(&data, size_x, size_y);
+		ft_parse_player_pos_x(&data);
+		ft_parse_player_pos_y(&data);
+		mlx_hook(data.win, 17, 0, red_cross, &data);
+		mlx_hook(data.win, 2, 0, ft_keycode, &data);
 		mlx_loop(data.mlx);
 	}
 	else

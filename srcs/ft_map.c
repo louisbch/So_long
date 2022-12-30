@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:48:41 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/29 18:44:12 by lbouchon         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:09:04 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,80 +41,78 @@ char	**ft_reading_map(char **av)
 	return (ft_split(all_lines, '\n'));
 }
 
-void	check_map(t_data data)
+void	check_map(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (data.map.map[i])
+	while (data->map.map[i])
 	{
-		if (ft_strnstr(data.map.map[i], "E", ft_strlen(data.map.map[i])))
-			data.out++;
-		if (ft_strnstr(data.map.map[i], "P", ft_strlen(data.map.map[i])))
-			data.player++;
-		if (ft_strnstr(data.map.map[i], "C", ft_strlen(data.map.map[i])))
-			data.collected++;
+		if (ft_strnstr(data->map.map[i], "E", ft_strlen(data->map.map[i])))
+			data->out++;
+		if (ft_strnstr(data->map.map[i], "P", ft_strlen(data->map.map[i])))
+			data->player++;
+		if (ft_strnstr(data->map.map[i], "C", ft_strlen(data->map.map[i])))
+			data->collected++;
 		i++;
 	}
-	if (data.player != 1)
+	if (data->player != 1)
 		ft_map_error("Need only one player !\n");
-	if (data.collected < 1)
+	if (data->collected < 1)
 		ft_map_error("Need at least one collectible !\n");
-	if (data.out != 1)
+	if (data->out != 1)
 		ft_map_error("Need only one exit !\n");
 	check_map_help(data);
 }
 
-void	check_map_help(t_data data)
+void	check_map_help(t_data *data)
 {
 	int	i;
 	int	j;
-	int	len;
 
 	i = 0;
-	len = ft_strlen(data.map.map[i]);
-	while (data.map.map[i])
+	data->len = ft_strlen(data->map.map[i]);
+	while (data->map.map[i])
 	{
 		j = 0;
-		while (data.map.map[i][j])
+		while (data->map.map[i][j])
 		{
 			check_char(data, i, j);
 			j++;
-			if (data.map.map[i][j] == len)
+			if (data->map.map[i][j] == data->len)
 				break ;
 		}
 		i++;
 	}
 }
 
-void	check_char(t_data data, int i, int j)
+void	check_char(t_data *data, int i, int j)
 {
-	if (data.map.map[i][j] != '1' && data.map.map[i][j] != '0' && data.map.map[i][j] != 'C'
-		&& data.map.map[i][j] != 'E' && data.map.map[i][j] != 'P')
+	if (data->map.map[i][j] != '1' && data->map.map[i][j] != '0' && data->map.map[i][j] != 'C'
+		&& data->map.map[i][j] != 'E' && data->map.map[i][j] != 'P')
 		ft_map_error("Not accept this character only 1,0,C,P,E\n");
 }
 
-void	ft_check_walls(t_data data)
+void	ft_check_walls(t_data *data)
 {
-	int	len;
 	int	i;
 	int	j;
 	int	count;
 
 	i = 0;
 	count = 0;
-	len = ft_strlen(data.map.map[i]);
-	while (data.map.map[count])
+	data->len = ft_strlen(data->map.map[i]);
+	while (data->map.map[count])
 		count++;
-	while (data.map.map[i])
+	while (data->map.map[i])
 	{
 		j = -1;
-		while (data.map.map[i][++j])
+		while (data->map.map[i][++j])
 		{
 			ft_check_walls_help(data, i, j, count);
-			if (j == len - 1)
+			if (j == data->len - 1)
 			{
-				if (data.map.map[i][j] != '1')
+				if (data->map.map[i][j] != '1')
 					ft_map_error("Invalid map\n");
 				break ;
 			}

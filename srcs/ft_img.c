@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:55:02 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/03 15:27:42 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:59:08 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_put_background(t_data *data, int size_x, int size_y)
 		{
 			background = mlx_xpm_file_to_image(data->mlx,
 					"./textures/background.xpm", &width, &heigth);
+			if (!background)
+				ft_map_error("Bad texture\n");
 			mlx_put_image_to_window(data->mlx, data->win, background, x, y);
 			x += 32;
 			if (x == size_x)

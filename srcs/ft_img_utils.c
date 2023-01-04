@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:37:37 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/04 16:58:03 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:18:01 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_put_player(t_data *data, char *str, int size_x, int size_y)
 
 	link = mlx_xpm_file_to_image(data->mlx,
 			str, &width, &heigth);
+	if (!link)
+		ft_map_error("Bad texture\n");
 	mlx_put_image_to_window(data->mlx, data->win, link, size_x, size_y);
 }
 

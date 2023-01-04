@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/30 13:54:35 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:24:15 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,24 @@ typedef struct s_player
 typedef struct s_map
 {
 	char	**map;
-	void	*object;
-	int		x;
-	int		y;
-	int		swords;
+	int		lenline;
+	int		nb_lines;
+
 }				t_map;
 
 /*--struct for the functions--*/
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	int		player;
-	int		collected;
-	int		out;
-	char	**av;
-	int		x;
-	int		y;
-	int		len;
-	t_map	map;
+	void		*mlx;
+	void		*win;
+	int			player;
+	int			collected;
+	int			out;
+	int			x;
+	int			y;
+	int			len;
+	t_map		map;
 	t_player	player_pos;
 }				t_data;
 
@@ -85,6 +83,7 @@ void	ft_put_walls(t_data *data, int size_x, int size_y);
 void	ft_put_player(t_data *data, char *str, int size_x, int size_y);
 void	ft_put_swords(t_data *data, int size_x, int size_y);
 void	ft_put_exit(t_data *data, int size_x, int size_y);
+void	ft_put_one_background(t_data *data, int size_x, int size_y);
 
 /*--FT_MAP.C--*/
 
@@ -99,16 +98,17 @@ void	ft_check_walls(t_data *data);
 int		str_last(char *str, char *need, size_t size);
 void	ft_map_error(char *str);
 void	ft_check_walls_help(t_data *data, int i, int j, int count);
-int		ft_check_size_of_char(t_data *data);
-int		ft_check_lines(t_data *data);
+int		ft_check_size_of_char(char **av);
+int		ft_check_lines(char **av);
 
-/*--FT_MAIN.C--*/
+/*--MAIN.C--*/
 
 void	ft_initialize_struct(t_data *data);
+void	ft_init_tab(t_data *data, char **av);
 
 /*--FT_KEY_CODE.C--*/
 
-int		ft_keycode(t_data data, int keycode);
+int		ft_keycode(int keycode, t_data *data);
 
 /*--FT_MOVE.C--*/
 

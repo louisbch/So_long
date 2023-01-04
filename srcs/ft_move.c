@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:13:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/30 13:54:30 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:43:44 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@ int	ft_parse_player_pos_x(t_data *data)
 		while (data->map.map[i][++j])
 		{
 			if (data->map.map[i][j] == 'P')
-			{
 				data->player_pos.pos_x = j * 32;
-			}
 			if (j == data->len - 1)
 				break ;
 		}
-		printf("%s\n", data->map.map[i]);
 		i++;
 	}
 	return (data->player_pos.pos_x);
@@ -50,13 +47,10 @@ int	ft_parse_player_pos_y(t_data *data)
 		while (data->map.map[i][++j])
 		{
 			if (data->map.map[i][j] == 'P')
-			{
 				data->player_pos.pos_y = i * 32;
-			}
 			if (j == data->len - 1)
 				break ;
 		}
-		printf("%s\n", data->map.map[i]);
 		i++;
 	}
 	return (data->player_pos.pos_y);
@@ -64,16 +58,79 @@ int	ft_parse_player_pos_y(t_data *data)
 
 void	ft_move(t_data *data, int keycode)
 {
-	printf("Salut\n");
-	printf("%d\n", data->player_pos.pos_x);
+	int	x;
+	int	y;
+	
 	data->player_pos.pos_x = ft_parse_player_pos_x(data);
 	data->player_pos.pos_y = ft_parse_player_pos_y(data);
-	printf("x = %d\n", data->player_pos.pos_x);
-	printf("x = %d\n", data->player_pos.pos_y);
-	if (keycode == W)
+	x = data->player_pos.pos_x / 32;
+	y = data->player_pos.pos_y / 32;
+	if (keycode == W && data->map.map[y - 1][x] != '1') 
 	{
-		ft_put_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+		if (data->map.map[y][x] == 'E')
+		{
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			ft_put_exit(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			data->map.map[y][x] = 'E';
+		}
+		else if (data->map.map[y][x] != 'E')
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+		data->player_pos.pos_y -= 32;
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = 'P';
+		ft_put_player(data, "./textures/up.xpm", data->player_pos.pos_x, data->player_pos.pos_y);
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = '0';
+	}
+	else if (keycode == S && data->map.map[y + 1][x] != '1')
+	{
+		if (data->map.map[y][x] == 'E')
+		{
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			ft_put_exit(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			data->map.map[y][x] = 'E';
+		}
+		else if (data->map.map[y][x] != 'E')
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+		data->player_pos.pos_y += 32;
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = 'P';
+		ft_put_player(data, "./textures/down.xpm", data->player_pos.pos_x, data->player_pos.pos_y );
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = '0';
+	}
+	else if (keycode == D && data->map.map[y][x + 1] != '1')
+	{
+		if (data->map.map[y][x] == 'E')
+		{
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			ft_put_exit(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			data->map.map[y][x] = 'E';
+		}
+		else if (data->map.map[y][x] != 'E')
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+		data->player_pos.pos_x += 32;
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = 'P';
+		ft_put_player(data, "./textures/right.xpm", data->player_pos.pos_x, data->player_pos.pos_y);
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = '0';
+	}
+	else if (keycode == A && data->map.map[y][x - 1] != '1')
+	{
+		if (data->map.map[y][x] == 'E')
+		{
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			ft_put_exit(data, data->player_pos.pos_x, data->player_pos.pos_y);
+			data->map.map[y][x] = 'E';
+		}
+		else if (data->map.map[y][x] != 'E')
+			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
 		data->player_pos.pos_x -= 32;
-		ft_put_player(data, "./textures/right.xpm", data->player_pos.pos_x, data->player_pos.pos_x);
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = 'P';
+		ft_put_player(data, "./textures/left.xpm", data->player_pos.pos_x, data->player_pos.pos_y);
+		if (data->map.map[y][x] != 'E')
+			data->map.map[y][x] = '0';
 	}
 }

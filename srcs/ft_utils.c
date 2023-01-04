@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:33 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/30 13:02:00 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:26:26 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,27 @@ void	ft_check_walls_help(t_data *data, int i, int j, int count)
 		ft_map_error("Invalid map\n");
 }
 
-int	ft_check_size_of_char(t_data *data)
+int	ft_check_size_of_char(char **av)
 {
-	int	i;
+	int		i;
+	char	**my_tab;
+	int		len;
 	
 	i = 0;
-	data->len = ft_strlen(data->map.map[i]);
-	return (data->len);
+	my_tab = ft_reading_map(av);
+	len = ft_strlen(my_tab[i]);
+	return (len);
 }
 
-int	ft_check_lines(t_data *data)
+int	ft_check_lines(char **av)
 {
-	int	i;
-	int	count;
-
+	int		i;
+	int		count;
+	char	**my_tab;
 	i = 0;
 	count = 0;
-	while (data->map.map[i])
+	my_tab = ft_reading_map(av);
+	while (my_tab[i])
 	{
 		i++;
 		count++;

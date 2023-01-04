@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:48:41 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/30 13:09:04 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:33:21 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	**ft_reading_map(char **av)
 {
 	char	*line;
-	char	*all_lines;
 	int		fd;
-
+	char	*all_lines;
+	
 	all_lines = ft_strdup("");
 	if (!all_lines)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:37:37 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/30 12:57:25 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:57:12 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,17 @@ void	ft_put_exit(t_data *data, int size_x, int size_y)
 	out = mlx_xpm_file_to_image(data->mlx,
 			"./textures/exit.xpm", &width, &heigth);
 	mlx_put_image_to_window(data->mlx, data->win, out, size_x, size_y);
+}
+
+void	ft_put_one_background(t_data *data, int size_x, int size_y)
+{
+	void	*background;
+	int		width;
+	int		heigth;
+	background = mlx_xpm_file_to_image(data->mlx,
+		"./textures/background.xpm", &width, &heigth);
+	if (!background)
+		exit(1);
+	mlx_put_image_to_window(data->mlx, data->win, background, size_x, size_y);
+	
 }

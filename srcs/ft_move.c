@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:13:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/04 16:43:44 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:03:21 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,20 @@ void	ft_move(t_data *data, int keycode)
 	data->player_pos.pos_y = ft_parse_player_pos_y(data);
 	x = data->player_pos.pos_x / 32;
 	y = data->player_pos.pos_y / 32;
+	if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+	{
+		ft_putstr_fd("Congratulations ! You won\n", 1);
+		exit(EXIT_SUCCESS);	
+	}
 	if (keycode == W && data->map.map[y - 1][x] != '1') 
 	{
+		if (data->map.map[y][x] == 'C')
+			data->collected++;
+		if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+		{
+			ft_putstr_fd("Congratulations ! You won\n", 1);
+			exit(EXIT_SUCCESS);	
+		}
 		if (data->map.map[y][x] == 'E')
 		{
 			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
@@ -82,8 +94,20 @@ void	ft_move(t_data *data, int keycode)
 		if (data->map.map[y][x] != 'E')
 			data->map.map[y][x] = '0';
 	}
+	if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+	{
+		ft_putstr_fd("Congratulations ! You won\n", 1);
+		exit(EXIT_SUCCESS);	
+	}
 	else if (keycode == S && data->map.map[y + 1][x] != '1')
 	{
+		if (data->map.map[y][x] == 'C')
+			data->collected++;
+		if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+		{
+			ft_putstr_fd("Congratulations ! You won\n", 1);
+			exit(EXIT_SUCCESS);	
+		}
 		if (data->map.map[y][x] == 'E')
 		{
 			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
@@ -99,8 +123,20 @@ void	ft_move(t_data *data, int keycode)
 		if (data->map.map[y][x] != 'E')
 			data->map.map[y][x] = '0';
 	}
+	if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+	{
+		ft_putstr_fd("Congratulations ! You won\n", 1);
+		exit(EXIT_SUCCESS);	
+	}
 	else if (keycode == D && data->map.map[y][x + 1] != '1')
 	{
+		if (data->map.map[y][x] == 'C')
+			data->collected++;
+		if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+		{
+			ft_putstr_fd("Congratulations ! You won\n", 1);
+			exit(EXIT_SUCCESS);	
+		}
 		if (data->map.map[y][x] == 'E')
 		{
 			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);
@@ -116,8 +152,20 @@ void	ft_move(t_data *data, int keycode)
 		if (data->map.map[y][x] != 'E')
 			data->map.map[y][x] = '0';
 	}
+	if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+	{
+		ft_putstr_fd("Congratulations ! You won\n", 1);
+		exit(EXIT_SUCCESS);	
+	}
 	else if (keycode == A && data->map.map[y][x - 1] != '1')
 	{
+		if (data->map.map[y][x] == 'C')
+			data->collected++;
+		if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+		{
+			ft_putstr_fd("Congratulations ! You won\n", 1);
+			exit(EXIT_SUCCESS);	
+		}
 		if (data->map.map[y][x] == 'E')
 		{
 			ft_put_one_background(data, data->player_pos.pos_x, data->player_pos.pos_y);

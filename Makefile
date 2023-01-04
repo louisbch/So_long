@@ -6,7 +6,7 @@
 #    By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:47:11 by lbouchon          #+#    #+#              #
-#    Updated: 2022/12/29 17:47:31 by lbouchon         ###   ########.fr        #
+#    Updated: 2023/01/04 17:49:32 by lbouchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = $(DIR)main.c				\
 		$(DIR)ft_img_utils.c	\
 		$(DIR)ft_keycode.c		\
 		$(DIR)ft_move.c			\
+		$(DIR)ft_sword.c		\
 		
 OBJS = ${SRCS:.c=.o}
 

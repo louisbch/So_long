@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/04 16:24:15 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:49:41 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,9 @@ void	ft_move(t_data *data, int keycode);
 int		ft_parse_player_pos_x(t_data *data);
 int		ft_parse_player_pos_y(t_data *data);
 
-/*--FT_FINISH.c--*/
+/*--FT_SWORD.C--*/
+
+int	ft_swords(t_data *data);
 
 /*--FT_PARSING.C--*/
 

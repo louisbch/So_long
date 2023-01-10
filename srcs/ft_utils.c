@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:33 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/03 15:26:26 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:08:26 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_check_size_of_char(char **av)
 	int		i;
 	char	**my_tab;
 	int		len;
-	
+
 	i = 0;
 	my_tab = ft_reading_map(av);
 	len = ft_strlen(my_tab[i]);
@@ -53,6 +53,7 @@ int	ft_check_lines(char **av)
 	int		i;
 	int		count;
 	char	**my_tab;
+
 	i = 0;
 	count = 0;
 	my_tab = ft_reading_map(av);

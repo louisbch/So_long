@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:55:02 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/04 16:59:08 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:13:19 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_put_img_help(t_data *data, int i, int j)
 	if (data->map.map[i][j] == '1')
 		ft_put_walls(data, data->x, data->y);
 	if (data->map.map[i][j] == 'P')
-		ft_put_player(data, "./textures/right.xpm",data->x, data->y);
+		ft_put_player(data, "./textures/right.xpm", data->x, data->y);
 	if (data->map.map[i][j] == 'C')
 		ft_put_swords(data, data->x, data->y);
 	if (data->map.map[i][j] == 'E')

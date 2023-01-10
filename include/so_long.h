@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/04 17:49:41 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:58:53 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_player
 {
 	int		pos_x;
 	int		pos_y;
-	
 }				t_player;
 
 /*--struct for the map--*/
@@ -62,10 +61,12 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	int			player;
+	int			player_move;
 	int			collected;
 	int			out;
 	int			x;
 	int			y;
+	int			res;
 	int			len;
 	t_map		map;
 	t_player	player_pos;
@@ -116,10 +117,19 @@ void	ft_move(t_data *data, int keycode);
 int		ft_parse_player_pos_x(t_data *data);
 int		ft_parse_player_pos_y(t_data *data);
 
+/*--FT_MOVE.C--*/
+
+void	move_up(t_data *data, int x, int y);
+void	move_down(t_data *data, int x, int y);
+void	move_right(t_data *data, int x, int y);
+void	move_left(t_data *data, int x, int y);
+
 /*--FT_SWORD.C--*/
 
-int	ft_swords(t_data *data);
+int		ft_swords(t_data *data);
 
-/*--FT_PARSING.C--*/
+/*--FT_WIN.C--*/
+
+void	ft_win(void);
 
 #endif

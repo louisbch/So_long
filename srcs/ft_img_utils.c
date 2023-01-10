@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:37:37 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/04 17:18:01 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:11:28 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	ft_put_one_background(t_data *data, int size_x, int size_y)
 	void	*background;
 	int		width;
 	int		heigth;
+
 	background = mlx_xpm_file_to_image(data->mlx,
-		"./textures/background.xpm", &width, &heigth);
+			"./textures/background.xpm", &width, &heigth);
 	if (!background)
 		ft_map_error("Bad texture\n");
 	mlx_put_image_to_window(data->mlx, data->win, background, size_x, size_y);
-	
 }

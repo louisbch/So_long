@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:48:41 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/03 15:33:21 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:14:45 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**ft_reading_map(char **av)
 	char	*line;
 	int		fd;
 	char	*all_lines;
-	
+
 	all_lines = ft_strdup("");
 	if (!all_lines)
 		return (NULL);
@@ -88,7 +88,8 @@ void	check_map_help(t_data *data)
 
 void	check_char(t_data *data, int i, int j)
 {
-	if (data->map.map[i][j] != '1' && data->map.map[i][j] != '0' && data->map.map[i][j] != 'C'
+	if (data->map.map[i][j] != '1' && data->map.map[i][j] != '0'
+		&& data->map.map[i][j] != 'C'
 		&& data->map.map[i][j] != 'E' && data->map.map[i][j] != 'P')
 		ft_map_error("Not accept this character only 1,0,C,P,E\n");
 }

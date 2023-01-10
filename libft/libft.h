@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:32:11 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/29 13:48:00 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:20:25 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 size_t	ft_strlen(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char *s1, char *s2);
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *src);

@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:13:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 17:59:51 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:43:05 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,6 @@ void	ft_move(t_data *data, int keycode)
 	data->player_pos.pos_y = ft_parse_player_pos_y(data);
 	x = data->player_pos.pos_x / 32;
 	y = data->player_pos.pos_y / 32;
-	if (data->collected == ft_swords(data) && data->map.map[y][x + 1] == 'E')
-		ft_win();
-	if (data->collected == ft_swords(data) && data->map.map[y][x - 1] == 'E')
-		ft_win();
-	if (data->collected == ft_swords(data) && data->map.map[y - 1][x] == 'E')
-		ft_win();
-	if (data->collected == ft_swords(data) && data->map.map[y + 1][x] == 'E')
-		ft_win();
 	if (keycode == W && data->map.map[y - 1][x] != '1')
 		move_up(data, x, y);
 	else if (keycode == S && data->map.map[y + 1][x] != '1')
@@ -81,4 +73,8 @@ void	ft_move(t_data *data, int keycode)
 		move_right(data, x, y);
 	else if (keycode == A && data->map.map[y][x - 1] != '1')
 		move_left(data, x, y);
+	x = data->player_pos.pos_x / 32;
+	y = data->player_pos.pos_y / 32;
+	if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
+		ft_win();
 }

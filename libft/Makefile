@@ -6,7 +6,7 @@
 #    By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 14:24:53 by lbouchon          #+#    #+#              #
-#    Updated: 2022/12/29 14:58:51 by lbouchon         ###   ########.fr        #
+#    Updated: 2023/01/10 18:20:39 by lbouchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,6 @@ SRCS = \
 			ft_strnstr.c			\
 			ft_strncmp.c			\
 			ft_strjoin.c			\
-			ft_calloc.c				\
-			ft_bzero.c				\
 			ft_split.c				\
 			ft_putstr_fd.c			\
 			ft_strdup.c				\

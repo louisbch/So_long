@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 17:58:53 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:56:37 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,17 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 
-/*--struct for xpm and textures--*/
+typedef struct s_path
+{
+	int		coins;
+	int		exit;
+}				t_path;
 
 typedef struct s_player
 {
 	int		pos_x;
 	int		pos_y;
 }				t_player;
-
-/*--struct for the map--*/
 
 typedef struct s_map
 {
@@ -53,8 +55,6 @@ typedef struct s_map
 	int		nb_lines;
 
 }				t_map;
-
-/*--struct for the functions--*/
 
 typedef struct s_data
 {
@@ -66,7 +66,6 @@ typedef struct s_data
 	int			out;
 	int			x;
 	int			y;
-	int			res;
 	int			len;
 	t_map		map;
 	t_player	player_pos;
@@ -131,5 +130,10 @@ int		ft_swords(t_data *data);
 /*--FT_WIN.C--*/
 
 void	ft_win(void);
+
+/*--FT_PATH.C--*/
+
+int		check_paths(t_data *data, int pos_y, int pos_x, int collected);
+char    **duplicate_map(t_data *data);
 
 #endif

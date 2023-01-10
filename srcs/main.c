@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:44 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 16:30:10 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:26:39 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_initialize_struct(t_data *data)
 	data->len = 0;
 	data->x = 0;
 	data->y = 0;
-	data->res = 0;
 }
 
 int	red_cross(void)
@@ -42,6 +41,9 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		data.map.map = ft_reading_map(av);
+		if (check_paths(&data, ft_parse_player_pos_y(&data) / 32,
+			ft_parse_player_pos_x(&data) / 32,ft_swords(&data)) == 0)
+			ft_map_error("Error\nInvalid map\n");
 		x = ft_check_size_of_char(av);
 		y = ft_check_lines(av);
 		ft_initialize_struct(&data);

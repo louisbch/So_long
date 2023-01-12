@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:01:07 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 17:56:14 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:32:13 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	move_up(t_data *data, int x, int y)
 {
 	data->player_move++;
-	printf("Player move : %d\n", data->player_move);
+	ft_printf("Player move : %d\n", data->player_move);
 	if (data->map.map[y][x] == 'C')
 			data->collected++;
 	if (data->map.map[y][x] == 'E')
@@ -40,7 +40,7 @@ void	move_up(t_data *data, int x, int y)
 void	move_down(t_data *data, int x, int y)
 {
 	data->player_move++;
-	printf("Player move : %d\n", data->player_move);
+	ft_printf("Player move : %d\n", data->player_move);
 	if (data->map.map[y][x] == 'C')
 		data->collected++;
 	if (data->map.map[y][x] == 'E')
@@ -65,7 +65,7 @@ void	move_down(t_data *data, int x, int y)
 void	move_right(t_data *data, int x, int y)
 {
 	data->player_move++;
-	printf("Player move : %d\n", data->player_move);
+	ft_printf("Player move : %d\n", data->player_move);
 	if (data->map.map[y][x] == 'C')
 		data->collected++;
 	if (data->map.map[y][x] == 'E')
@@ -90,7 +90,7 @@ void	move_right(t_data *data, int x, int y)
 void	move_left(t_data *data, int x, int y)
 {
 	data->player_move++;
-	printf("Player move : %d\n", data->player_move);
+	ft_printf("Player move : %d\n", data->player_move);
 	if (data->map.map[y][x] == 'C')
 		data->collected++;
 	if (data->map.map[y][x] == 'E')

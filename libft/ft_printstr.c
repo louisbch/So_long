@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sword.c                                         :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 17:37:31 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 10:31:34 by lbouchon         ###   ########.fr       */
+/*   Created: 2022/08/03 16:17:20 by lbouchon          #+#    #+#             */
+/*   Updated: 2023/01/12 11:27:29 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-int	ft_swords(t_data *data)
+int	ft_printstr(char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (data->map.map[i])
+	if (str == 0)
 	{
-		j = 0;
-		while (data->map.map[i][j])
-		{
-			if (data->map.map[i][j] == 'C')
-				data->collected++;
-			j++;
-		
-		}
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
 		i++;
 	}
-	return (data->collected);
+	return (i);
 }

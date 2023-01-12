@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:32:11 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 18:20:25 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:29:54 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
 
 /*--GET_NEXT_LINE--*/
 
@@ -33,6 +34,25 @@ size_t	ft_strlen_gnl(const char *s);
 int		ft_find_nl(char *s);
 char	*ft_line(int fd, char *s);
 char	*ft_find_str(char *s);
+
+/*--FT_PRINTF.C--*/
+
+int		ft_hex_len(unsigned int nb);
+void	ft_put_hex(unsigned int nb, const char format);
+int		ft_print_hex(unsigned int nb, const char format);
+int		ft_unsigned_len(unsigned int nb);
+char	*ft_utoa(unsigned int nb);
+int		ft_print_unsigned(unsigned int nb);
+int		ft_search_args(va_list args, const char format);
+int		ft_printf(const char *format, ...);
+int		ft_ptr_len(unsigned long nb);
+void	ft_putptr(unsigned long nb);
+int		ft_printptr(unsigned long nb);
+int		ft_printstr(char *str);
+int		ft_print_perc(void);
+int		ft_printnbr(int nb);
+int		ft_printchar(char c);
+char	*ft_itoa(int n);
 
 /*--LIBFT--*/
 

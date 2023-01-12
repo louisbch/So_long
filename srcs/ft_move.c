@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:13:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 18:43:05 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:39:58 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_parse_player_pos_x(t_data *data)
 	int	j;
 
 	i = 0;
-	data->len = ft_strlen(data->map.map[i]);
 	while (data->map.map[i])
 	{
 		j = -1;
@@ -26,8 +25,6 @@ int	ft_parse_player_pos_x(t_data *data)
 		{
 			if (data->map.map[i][j] == 'P')
 				data->player_pos.pos_x = j * 32;
-			if (j == data->len - 1)
-				break ;
 		}
 		i++;
 	}
@@ -40,7 +37,6 @@ int	ft_parse_player_pos_y(t_data *data)
 	int	j;
 
 	i = 0;
-	data->len = ft_strlen(data->map.map[i]);
 	while (data->map.map[i])
 	{
 		j = -1;
@@ -48,8 +44,6 @@ int	ft_parse_player_pos_y(t_data *data)
 		{
 			if (data->map.map[i][j] == 'P')
 				data->player_pos.pos_y = i * 32;
-			if (j == data->len - 1)
-				break ;
 		}
 		i++;
 	}

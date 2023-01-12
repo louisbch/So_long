@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 18:56:37 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:33:37 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <mlx.h>
-# include <stdio.h> //TO DELETE
 # include "../libft/libft.h"
 
 /*--DEFINE TOUCH--*/
@@ -134,6 +133,8 @@ void	ft_win(void);
 /*--FT_PATH.C--*/
 
 int		check_paths(t_data *data, int pos_y, int pos_x, int collected);
-char    **duplicate_map(t_data *data);
+char	**duplicate_map(t_data *data);
+void	help_path(t_path *path, char **map, int y, int x);
+void	ft_path(t_path *path, char **map, int y, int x);
 
 #endif

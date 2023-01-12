@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:44 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 19:26:39 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:36:20 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		data.map.map = ft_reading_map(av);
-		if (check_paths(&data, ft_parse_player_pos_y(&data) / 32,
-			ft_parse_player_pos_x(&data) / 32,ft_swords(&data)) == 0)
-			ft_map_error("Error\nInvalid map\n");
 		x = ft_check_size_of_char(av);
 		y = ft_check_lines(av);
+		if (check_paths(&data, ft_parse_player_pos_y(&data) / 32,
+			ft_parse_player_pos_x(&data) / 32, ft_swords(&data)) == 0)
+			ft_map_error("Error\nInvalid map05\n");
 		ft_initialize_struct(&data);
 		check_map(&data);
 		ft_check_walls(&data);

@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:33 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 16:08:26 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:34:24 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	ft_map_error(char *str)
 void	ft_check_walls_help(t_data *data, int i, int j, int count)
 {
 	if (i == 0 && data->map.map[i][j] != '1')
-		ft_map_error("Invalid map\n");
+		ft_map_error("Error\nInvalid map01\n");
 	if (j == 0 && data->map.map[i][j] != '1')
-		ft_map_error("Invalid map\n");
+		ft_map_error("Error\nInvalid map02\n");
 	if (i == (count - 1) && data->map.map[i][j] != '1')
-		ft_map_error("Invalid map\n");
+		ft_map_error("Error\nInvalid map03\n");
 }
 
 int	ft_check_size_of_char(char **av)

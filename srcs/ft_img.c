@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:55:02 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 13:42:22 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:46:53 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_put_background(t_data *data, int size_x, int size_y)
 			if (!background)
 				ft_map_error("Error\nBad texture\n", data);
 			mlx_put_image_to_window(data->mlx, data->win, background, x, y);
+			mlx_destroy_image(data->mlx, background);
 			x += 32;
 			if (x == size_x)
 				break ;

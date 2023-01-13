@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:33 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 17:35:39 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:55:15 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	ft_map_error(char *str, t_data *data)
 void	ft_check_walls_help(t_data *data, int i, int j, int count)
 {
 	if (i == 0 && data->map.map[i][j] != '1')
-		ft_map_error("Error\nInvalid map\n", data);
+		ft_map_error("Error\nWrong walls\n", data);
 	if (j == 0 && data->map.map[i][j] != '1')
-		ft_map_error("Error\nInvalid map\n", data);
+		ft_map_error("Error\nWrong walls\n", data);
 	if (i == (count - 1) && data->map.map[i][j] != '1')
-		ft_map_error("Error\nInvalid map\n", data);
+		ft_map_error("Error\nWrong walls\n", data);
 }
 
 int	ft_lenline(t_data *data)

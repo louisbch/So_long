@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:37:37 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 13:39:14 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:42:53 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_put_walls(t_data *data, int size_x, int size_y)
 	if (!walls)
 		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, walls, size_x, size_y);
+	mlx_destroy_image(data->mlx, walls);
 }
 
 void	ft_put_player(t_data *data, char *str, int size_x, int size_y)
@@ -36,6 +37,7 @@ void	ft_put_player(t_data *data, char *str, int size_x, int size_y)
 	if (!link)
 		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, link, size_x, size_y);
+	mlx_destroy_image(data->mlx, link);
 }
 
 void	ft_put_swords(t_data *data, int size_x, int size_y)
@@ -49,6 +51,7 @@ void	ft_put_swords(t_data *data, int size_x, int size_y)
 	if (!swords)
 		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, swords, size_x, size_y);
+	mlx_destroy_image(data->mlx, swords);
 }
 
 void	ft_put_exit(t_data *data, int size_x, int size_y)
@@ -62,6 +65,7 @@ void	ft_put_exit(t_data *data, int size_x, int size_y)
 	if (!out)
 		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, out, size_x, size_y);
+	mlx_destroy_image(data->mlx, out);
 }
 
 void	ft_put_one_background(t_data *data, int size_x, int size_y)
@@ -75,4 +79,5 @@ void	ft_put_one_background(t_data *data, int size_x, int size_y)
 	if (!background)
 		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, background, size_x, size_y);
+	mlx_destroy_image(data->mlx, background);
 }

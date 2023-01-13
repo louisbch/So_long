@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:48:41 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/13 12:23:32 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:00:55 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,7 @@ char	**ft_reading_map(char **av, int i, int j, int fd)
 	close(fd);
 	fd = open(av[1], O_RDONLY);
 	while (++j < i - 1)
-	{
-		line = get_next_line(fd);
-		map[j] = line;
-		map[j][ft_strlenback(map[j])] = '\0';
-	}
+		ft_reading_help(fd, j, map, line);
 	close(fd);
 	map[j] = NULL;
 	return (map);
@@ -116,7 +112,7 @@ void	ft_check_walls(t_data *data)
 			if (j == data->len - 1)
 			{
 				if (data->map.map[i][j] != '1')
-					ft_map_error("Error\nInvalid map\n", data);
+					ft_map_error("Error\nWrong walls\n", data);
 				break ;
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/13 11:07:24 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:00:45 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,10 @@ void	move_left(t_data *data, int x, int y);
 int		ft_swords(t_data *data);
 void	ft_rectangular(t_data *data);
 int		ft_strlenback(char *str);
-void	ft_open_map(char **av, int fd);
 
 /*--FT_WIN.C--*/
 
 void	ft_win(t_data *data);
-void	ft_free_data(t_data *data);
-void	ft_invalid(char *str);
 
 /*--FT_PATH.C--*/
 
@@ -138,5 +135,12 @@ int		check_paths(t_data *data, int pos_y, int pos_x, int collected);
 char	**duplicate_map(t_data *data);
 void	ft_path_help(t_path *path, char **map, int y, int x);
 void	ft_path(t_path *path, char **map, int y, int x);
+
+/*--FT_UTILS2.C--*/
+
+void	ft_open_map(char **av, int fd);
+void	ft_invalid(char *str);
+void	ft_free_data(t_data *data);
+void	ft_reading_help(int fd, int j, char **map, char *line);
 
 #endif

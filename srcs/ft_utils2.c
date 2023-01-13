@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:51:00 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/13 15:00:26 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:02:31 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	ft_reading_help(int fd, int j, char **map, char *line)
 {
 	line = get_next_line(fd);
 	map[j] = line;
-	map[j][ft_strlenback(map[j])] = '\0';	
+	map[j][ft_strlenback(map[j])] = '\0';
 }

@@ -6,7 +6,7 @@
 #    By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:47:11 by lbouchon          #+#    #+#              #
-#    Updated: 2023/01/13 14:54:24 by lbouchon         ###   ########.fr        #
+#    Updated: 2023/01/13 15:03:11 by lbouchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,4 @@ re: fclean all
 		@echo "\033[1;33mCompiling So_long...\033[0m"
 		$(CC) $(MLX_INC) $(CFLAGS) -o $@ -c $<
 
-norm:
-		$(NORMINETTE)
 .PHONY: all clean fclean re norm

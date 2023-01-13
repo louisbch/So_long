@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:44 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/13 14:49:58 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:02:08 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_initialize_struct(t_data *data)
 	data->y = ft_nb_lines(data);
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, data->x * 32, data->y * 32,
-		"so_long");
+			"so_long");
 	data->collected = 0;
 	data->out = 0;
 	data->player = 0;

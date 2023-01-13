@@ -6,7 +6,7 @@
 #    By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:47:11 by lbouchon          #+#    #+#              #
-#    Updated: 2023/01/10 19:15:09 by lbouchon         ###   ########.fr        #
+#    Updated: 2023/01/12 17:25:43 by lbouchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ DIR = srcs/
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 
 NORMINETTE = norminette
 			

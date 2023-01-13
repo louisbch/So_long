@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:14:49 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 10:17:44 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:52:29 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ char	**duplicate_map(t_data *data)
 	return (my_map);
 }
 
-void	help_path(t_path *path, char **map, int y, int x)
+void	ft_path_help(t_path *path, char **map, int y, int x)
 {
 	if (map[y][x - 1] != '1')
 	{
-		if ((map[y][x - 1] == 'C' && path->coins++) ||
-			(map[y][x - 1] == 'E' && path->exit++))
-			;
+		(map[y][x - 1] == 'C' && path->coins++) ||
+			(map[y][x - 1] == 'E' && path->exit++);
 		map[y][x - 1] = '1';
 		ft_path(path, map, y, x - 1);
 	}
@@ -55,29 +54,26 @@ void	ft_path(t_path *path, char **map, int y, int x)
 {
 	if (map[y + 1][x] != '1')
 	{
-		if ((map[y + 1][x] == 'C' && path->coins++) ||
-			(map[y + 1][x] == 'E' && path->exit++))
-			;
+		(map[y + 1][x] == 'C' && path->coins++) ||
+			(map[y + 1][x] == 'E' && path->exit++);
 		map[y + 1][x] = '1';
 		ft_path(path, map, y + 1, x);
 	}
 	if (map[y - 1][x] != '1')
 	{
-		if ((map[y - 1][x] == 'C' && path->coins++) ||
-			(map[y - 1][x] == 'E' && path->exit++))
-			;
+		(map[y - 1][x] == 'C' && path->coins++) ||
+			(map[y - 1][x] == 'E' && path->exit++);
 		map[y - 1][x] = '1';
 		ft_path(path, map, y - 1, x);
 	}
 	if (map[y][x + 1] != '1')
 	{
-		if ((map[y][x + 1] == 'C' && path->coins++) ||
-			(map[y][x + 1] == 'E' && path->exit++))
-			;
+		(map[y][x + 1] == 'C' && path->coins++) ||
+			(map[y][x + 1] == 'E' && path->exit++);
 		map[y][x + 1] = '1';
 		ft_path(path, map, y, x + 1);
 	}
-	help_path(path, map, y, x);
+	ft_path_help(path, map, y, x);
 }
 
 int	check_paths(t_data *data, int pos_y, int pos_x, int collected)

@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:14:33 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 10:34:24 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:35:39 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	str_last(char *str, char *need, size_t size)
 			need + ft_strlen(need) - size, size));
 }
 
-void	ft_map_error(char *str)
+void	ft_map_error(char *str, t_data *data)
 {
+	ft_free_data(data);
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }
@@ -29,38 +30,28 @@ void	ft_map_error(char *str)
 void	ft_check_walls_help(t_data *data, int i, int j, int count)
 {
 	if (i == 0 && data->map.map[i][j] != '1')
-		ft_map_error("Error\nInvalid map01\n");
+		ft_map_error("Error\nInvalid map\n", data);
 	if (j == 0 && data->map.map[i][j] != '1')
-		ft_map_error("Error\nInvalid map02\n");
+		ft_map_error("Error\nInvalid map\n", data);
 	if (i == (count - 1) && data->map.map[i][j] != '1')
-		ft_map_error("Error\nInvalid map03\n");
+		ft_map_error("Error\nInvalid map\n", data);
 }
 
-int	ft_check_size_of_char(char **av)
+int	ft_lenline(t_data *data)
 {
 	int		i;
-	char	**my_tab;
-	int		len;
 
 	i = 0;
-	my_tab = ft_reading_map(av);
-	len = ft_strlen(my_tab[i]);
-	return (len);
+	data->map.lenline = ft_strlen(data->map.map[i]);
+	return (data->map.lenline);
 }
 
-int	ft_check_lines(char **av)
+int	ft_nb_lines(t_data *data)
 {
 	int		i;
-	int		count;
-	char	**my_tab;
 
-	i = 0;
-	count = 0;
-	my_tab = ft_reading_map(av);
-	while (my_tab[i])
-	{
-		i++;
-		count++;
-	}
-	return (count);
+	i = -1;
+	while (data->map.map[++i])
+		data->map.nb_lines++;
+	return (data->map.nb_lines);
 }

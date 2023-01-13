@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:37:37 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 10:48:00 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:39:14 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_put_walls(t_data *data, int size_x, int size_y)
 	walls = mlx_xpm_file_to_image(data->mlx,
 			"./textures/wall.xpm", &width, &heigth);
 	if (!walls)
-		ft_map_error("Error\nBad texture\n");
+		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, walls, size_x, size_y);
 }
 
@@ -34,7 +34,7 @@ void	ft_put_player(t_data *data, char *str, int size_x, int size_y)
 	link = mlx_xpm_file_to_image(data->mlx,
 			str, &width, &heigth);
 	if (!link)
-		ft_map_error("Error\nBad texture\n");
+		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, link, size_x, size_y);
 }
 
@@ -47,7 +47,7 @@ void	ft_put_swords(t_data *data, int size_x, int size_y)
 	swords = mlx_xpm_file_to_image(data->mlx,
 			"./textures/sword.xpm", &width, &heigth);
 	if (!swords)
-		ft_map_error("Error\nBad texture\n");
+		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, swords, size_x, size_y);
 }
 
@@ -60,7 +60,7 @@ void	ft_put_exit(t_data *data, int size_x, int size_y)
 	out = mlx_xpm_file_to_image(data->mlx,
 			"./textures/exit.xpm", &width, &heigth);
 	if (!out)
-		ft_map_error("Error\nBad texture\n");
+		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, out, size_x, size_y);
 }
 
@@ -73,6 +73,6 @@ void	ft_put_one_background(t_data *data, int size_x, int size_y)
 	background = mlx_xpm_file_to_image(data->mlx,
 			"./textures/background.xpm", &width, &heigth);
 	if (!background)
-		ft_map_error("Error\nBad texture\n");
+		ft_map_error("Error\nBad texture\n", data);
 	mlx_put_image_to_window(data->mlx, data->win, background, size_x, size_y);
 }

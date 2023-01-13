@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 14:58:42 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/10 16:11:04 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:42:50 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	ft_keycode(int keycode, t_data *data)
 {
 	if (keycode == ESC)
+	{
+		ft_free_data(data);
 		exit(EXIT_SUCCESS);
+	}
 	else if (keycode == W)
 		ft_move(data, keycode);
 	else if (keycode == S)

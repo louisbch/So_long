@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:13:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 10:39:58 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:58:08 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_parse_player_pos_y(t_data *data)
 	int	j;
 
 	i = 0;
+	data->len = ft_strlen(data->map.map[i]);
 	while (data->map.map[i])
 	{
 		j = -1;
@@ -69,6 +70,6 @@ void	ft_move(t_data *data, int keycode)
 		move_left(data, x, y);
 	x = data->player_pos.pos_x / 32;
 	y = data->player_pos.pos_y / 32;
-	if (data->collected == ft_swords(data) && data->map.map[y][x] == 'E')
-		ft_win();
+	if (data->collected == data->swords && data->map.map[y][x] == 'E')
+		ft_win(data);
 }

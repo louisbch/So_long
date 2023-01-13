@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:32:11 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 11:29:54 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:38:43 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,10 @@
 #  define BUFFER_SIZE 1
 # endif
 
-char	*ft_substr_gnl(char const *s, unsigned int start, size_t len);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strchr(const char *s, int c);
 char	*get_next_line(int fd);
-char	*ft_strdup_gnl(const char *s);
-char	*ft_strjoin_gnl(char const *s1, char const *s2);
-char	*ft_strchr_gnl(const char *s, int c);
-size_t	ft_strlen_gnl(const char *s);
-int		ft_find_nl(char *s);
-char	*ft_line(int fd, char *s);
-char	*ft_find_str(char *s);
 
 /*--FT_PRINTF.C--*/
 

@@ -6,7 +6,7 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:17:10 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/01/12 11:33:37 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:07:24 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
 
 typedef struct s_path
 {
@@ -62,6 +58,7 @@ typedef struct s_data
 	int			player;
 	int			player_move;
 	int			collected;
+	int			swords;
 	int			out;
 	int			x;
 	int			y;
@@ -86,7 +83,7 @@ void	ft_put_one_background(t_data *data, int size_x, int size_y);
 
 /*--FT_MAP.C--*/
 
-char	**ft_reading_map(char **av);
+char	**ft_reading_map(char **av, int i, int j, int fd);
 void	check_map(t_data *data);
 void	check_map_help(t_data *data);
 void	check_char(t_data *data, int i, int j);
@@ -95,10 +92,10 @@ void	ft_check_walls(t_data *data);
 /*FT_UTILS.C*/
 
 int		str_last(char *str, char *need, size_t size);
-void	ft_map_error(char *str);
+void	ft_map_error(char *str, t_data *data);
 void	ft_check_walls_help(t_data *data, int i, int j, int count);
-int		ft_check_size_of_char(char **av);
-int		ft_check_lines(char **av);
+int		ft_nb_lines(t_data *data);
+int		ft_lenline(t_data *data);
 
 /*--MAIN.C--*/
 
@@ -125,16 +122,21 @@ void	move_left(t_data *data, int x, int y);
 /*--FT_SWORD.C--*/
 
 int		ft_swords(t_data *data);
+void	ft_rectangular(t_data *data);
+int		ft_strlenback(char *str);
+void	ft_open_map(char **av, int fd);
 
 /*--FT_WIN.C--*/
 
-void	ft_win(void);
+void	ft_win(t_data *data);
+void	ft_free_data(t_data *data);
+void	ft_invalid(char *str);
 
 /*--FT_PATH.C--*/
 
 int		check_paths(t_data *data, int pos_y, int pos_x, int collected);
 char	**duplicate_map(t_data *data);
-void	help_path(t_path *path, char **map, int y, int x);
+void	ft_path_help(t_path *path, char **map, int y, int x);
 void	ft_path(t_path *path, char **map, int y, int x);
 
 #endif

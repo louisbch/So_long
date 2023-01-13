@@ -6,81 +6,121 @@
 /*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:36:36 by lbouchon          #+#    #+#             */
-/*   Updated: 2022/12/22 14:51:14 by lbouchon         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:55:12 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_find_str(char *s)
+char	*ft_free(char *buffer, char *buf)
 {
-	char	*str;
+	char	*temp;
+
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
+}
+
+char	*ft_next(char *buffer)
+{
 	int		i;
-
-	if (!s)
-		return (NULL);
-	str = malloc(sizeof(char) * (ft_find_nl(s) + 2));
-	if (!str)
-		return (NULL);
-	i = -1;
-	while (++i <= ft_find_nl(s))
-		str[i] = s[i];
-	str[i] = '\0';
-	free(s);
-	return (str);
-}
-
-char	*ft_line(int fd, char *s)
-{
-	char	*buf;
-	int		res;
-
-	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (!buf)
-		return (NULL);
-	res = 1;
-	while (res > 0)
-	{
-		res = read(fd, buf, BUFFER_SIZE);
-		buf[res] = '\0';
-		s = ft_strjoin_gnl(s, buf);
-		if (ft_strchr_gnl(buf, '\n'))
-			break ;
-	}
-	free(buf);
-	return (s);
-}
-
-int	ft_find_nl(char *s)
-{
-	int	i;
+	int		j;
+	char	*line;
 
 	i = 0;
-	while (s && s[i] && s[i] != '\n')
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	return (i);
+	if (!buffer[i])
+	{
+		free(buffer);
+		return (NULL);
+	}
+	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	if (!line)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	i++;
+	j = 0;
+	while (buffer[i])
+		line[j++] = buffer[i++];
+	free(buffer);
+	return (line);
+}
+
+char	*ft_line(char *buffer)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	if (!buffer[i])
+		return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	line = ft_calloc(i + 2, sizeof(char));
+	if (!line)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	if (buffer[i] && buffer[i] == '\n')
+		line[i++] = '\n';
+	return (line);
+}
+
+char	*read_file(int fd, char *res)
+{
+	char	*buffer;
+	int		byte_read;
+
+	if (!res)
+		res = ft_calloc(1, 1);
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	byte_read = 1;
+	while (byte_read > 0)
+	{
+		byte_read = read(fd, buffer, BUFFER_SIZE);
+		buffer[byte_read] = 0;
+		res = ft_free(res, buffer);
+		if (ft_strchr(buffer, '\n'))
+			break ;
+	}
+	free(buffer);
+	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	char			*line;
-	static char		*stash;
+	static char	*buffer;
+	char		*line;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	else
+	if (read(fd, 0, 0) < 0)
 	{
-		line = ft_line(fd, stash);
-		stash = ft_substr_gnl(line, ft_find_nl(line) + 1, \
-		ft_strlen_gnl(line) - ft_find_nl(line) - 1);
-		line = ft_find_str(line);
-		if (stash && !stash[0] && !line[0])
-		{
-			free(line);
-			free(stash);
-			stash = NULL;
-			return (NULL);
-		}
+		if (buffer)
+			*buffer = 0;
+		return (NULL);
 	}
+	buffer = read_file(fd, buffer);
+	if (!buffer)
+	{
+		return (NULL);
+	}
+	line = ft_line(buffer);
+	buffer = ft_next(buffer);
 	return (line);
 }
